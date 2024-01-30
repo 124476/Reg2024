@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище WorldSkills2024DBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Gospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Diagnoz" Type="nvarchar" MaxLength="250" />
+          <Property Name="Chel" Type="nvarchar" MaxLength="250" />
+          <Property Name="Otdelenie" Type="int" />
+          <Property Name="Yslovie" Type="bit" />
+          <Property Name="DateStart" Type="date" />
+          <Property Name="DateEnd" Type="date" />
+          <Property Name="PacientId" Type="int" />
+        </EntityType>
+        <EntityType Name="Meropriation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Otdel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pacient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="Otechestvo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Subname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="Seria" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateBorn" Type="date" />
+          <Property Name="Pol" Type="bit" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="250" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCard" Type="date" />
+          <Property Name="DateLast" Type="date" />
+          <Property Name="DateNext" Type="date" />
+          <Property Name="DateEnd" Type="date" />
+          <Property Name="Polis" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Places">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacientId" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="TipId" Type="int" />
+          <Property Name="Result" Type="nvarchar" MaxLength="250" />
+          <Property Name="Recomendation" Type="nvarchar" MaxLength="250" />
+          <Property Name="DoctorId" Type="int" />
+          <Property Name="Money" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rechept">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Doza" Type="nvarchar" MaxLength="50" />
+          <Property Name="Format" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlacesId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Gospital_Otdel">
+          <End Role="Otdel" Type="Self.Otdel" Multiplicity="0..1" />
+          <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gospital">
+              <PropertyRef Name="Otdelenie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Pacient">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gospital">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Places_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Places" Type="Self.Places" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Places">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Places_Meropriation">
+          <End Role="Meropriation" Type="Self.Meropriation" Multiplicity="0..1" />
+          <End Role="Places" Type="Self.Places" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meropriation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Places">
+              <PropertyRef Name="TipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Places_Pacient">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Places" Type="Self.Places" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Places">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rechept_Places">
+          <End Role="Places" Type="Self.Places" Multiplicity="0..1" />
+          <End Role="Rechept" Type="Self.Rechept" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Places">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rechept">
+              <PropertyRef Name="PlacesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище WorldSkills2024DBModelContainer">
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gospital" EntityType="Self.Gospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meropriation" EntityType="Self.Meropriation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Otdel" EntityType="Self.Otdel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacient" EntityType="Self.Pacient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Places" EntityType="Self.Places" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rechept" EntityType="Self.Rechept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Gospital_Otdel" Association="Self.FK_Gospital_Otdel">
+            <End Role="Otdel" EntitySet="Otdel" />
+            <End Role="Gospital" EntitySet="Gospital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Pacient" Association="Self.FK_History_Pacient">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Gospital" EntitySet="Gospital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Places_Doctor" Association="Self.FK_Places_Doctor">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Places" EntitySet="Places" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Places_Meropriation" Association="Self.FK_Places_Meropriation">
+            <End Role="Meropriation" EntitySet="Meropriation" />
+            <End Role="Places" EntitySet="Places" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Places_Pacient" Association="Self.FK_Places_Pacient">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Places" EntitySet="Places" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rechept_Places" Association="Self.FK_Rechept_Places">
+            <End Role="Places" EntitySet="Places" />
+            <End Role="Rechept" EntitySet="Rechept" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorldSkills2024DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Places" Relationship="Self.FK_Places_Doctor" FromRole="Doctor" ToRole="Places" />
+        </EntityType>
+        <EntityType Name="Gospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Diagnoz" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Chel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Otdelenie" Type="Int32" />
+          <Property Name="Yslovie" Type="Boolean" />
+          <Property Name="DateStart" Type="DateTime" Precision="0" />
+          <Property Name="DateEnd" Type="DateTime" Precision="0" />
+          <Property Name="PacientId" Type="Int32" />
+          <NavigationProperty Name="Otdel" Relationship="Self.FK_Gospital_Otdel" FromRole="Gospital" ToRole="Otdel" />
+          <NavigationProperty Name="Pacient" Relationship="Self.FK_History_Pacient" FromRole="Gospital" ToRole="Pacient" />
+        </EntityType>
+        <EntityType Name="Meropriation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Places" Relationship="Self.FK_Places_Meropriation" FromRole="Meropriation" ToRole="Places" />
+        </EntityType>
+        <EntityType Name="Otdel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gospital" Relationship="Self.FK_Gospital_Otdel" FromRole="Otdel" ToRole="Gospital" />
+        </EntityType>
+        <EntityType Name="Pacient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Otechestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Seria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateBorn" Type="DateTime" Precision="0" />
+          <Property Name="Pol" Type="Boolean" />
+          <Property Name="Adress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCard" Type="DateTime" Precision="0" />
+          <Property Name="DateLast" Type="DateTime" Precision="0" />
+          <Property Name="DateNext" Type="DateTime" Precision="0" />
+          <Property Name="DateEnd" Type="DateTime" Precision="0" />
+          <Property Name="Polis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gospital" Relationship="Self.FK_History_Pacient" FromRole="Pacient" ToRole="Gospital" />
+          <NavigationProperty Name="Places" Relationship="Self.FK_Places_Pacient" FromRole="Pacient" ToRole="Places" />
+        </EntityType>
+        <EntityType Name="Places">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacientId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="TipId" Type="Int32" />
+          <Property Name="Result" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Recomendation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorId" Type="Int32" />
+          <Property Name="Money" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK_Places_Doctor" FromRole="Places" ToRole="Doctor" />
+          <NavigationProperty Name="Meropriation" Relationship="Self.FK_Places_Meropriation" FromRole="Places" ToRole="Meropriation" />
+          <NavigationProperty Name="Pacient" Relationship="Self.FK_Places_Pacient" FromRole="Places" ToRole="Pacient" />
+          <NavigationProperty Name="Rechept" Relationship="Self.FK_Rechept_Places" FromRole="Places" ToRole="Rechept" />
+        </EntityType>
+        <EntityType Name="Rechept">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Doza" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Format" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlacesId" Type="Int32" />
+          <NavigationProperty Name="Places" Relationship="Self.FK_Rechept_Places" FromRole="Rechept" ToRole="Places" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Places_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Places" Type="Self.Places" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Places">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gospital_Otdel">
+          <End Role="Otdel" Type="Self.Otdel" Multiplicity="0..1" />
+          <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gospital">
+              <PropertyRef Name="Otdelenie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Pacient">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gospital">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Places_Meropriation">
+          <End Role="Meropriation" Type="Self.Meropriation" Multiplicity="0..1" />
+          <End Role="Places" Type="Self.Places" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meropriation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Places">
+              <PropertyRef Name="TipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Places_Pacient">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Places" Type="Self.Places" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Places">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rechept_Places">
+          <End Role="Places" Type="Self.Places" Multiplicity="0..1" />
+          <End Role="Rechept" Type="Self.Rechept" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Places">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rechept">
+              <PropertyRef Name="PlacesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorldSkills2024DBEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" />
+          <EntitySet Name="Gospital" EntityType="Self.Gospital" />
+          <EntitySet Name="Meropriation" EntityType="Self.Meropriation" />
+          <EntitySet Name="Otdel" EntityType="Self.Otdel" />
+          <EntitySet Name="Pacient" EntityType="Self.Pacient" />
+          <EntitySet Name="Places" EntityType="Self.Places" />
+          <EntitySet Name="Rechept" EntityType="Self.Rechept" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Places_Doctor" Association="Self.FK_Places_Doctor">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Places" EntitySet="Places" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gospital_Otdel" Association="Self.FK_Gospital_Otdel">
+            <End Role="Otdel" EntitySet="Otdel" />
+            <End Role="Gospital" EntitySet="Gospital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Pacient" Association="Self.FK_History_Pacient">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Gospital" EntitySet="Gospital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Places_Meropriation" Association="Self.FK_Places_Meropriation">
+            <End Role="Meropriation" EntitySet="Meropriation" />
+            <End Role="Places" EntitySet="Places" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Places_Pacient" Association="Self.FK_Places_Pacient">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Places" EntitySet="Places" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rechept_Places" Association="Self.FK_Rechept_Places">
+            <End Role="Places" EntitySet="Places" />
+            <End Role="Rechept" EntitySet="Rechept" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище WorldSkills2024DBModelContainer" CdmEntityContainer="WorldSkills2024DBEntities2">
+          <EntitySetMapping Name="Doctor">
+            <EntityTypeMapping TypeName="WorldSkills2024DBModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gospital">
+            <EntityTypeMapping TypeName="WorldSkills2024DBModel.Gospital">
+              <MappingFragment StoreEntitySet="Gospital">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Diagnoz" ColumnName="Diagnoz" />
+                <ScalarProperty Name="Chel" ColumnName="Chel" />
+                <ScalarProperty Name="Otdelenie" ColumnName="Otdelenie" />
+                <ScalarProperty Name="Yslovie" ColumnName="Yslovie" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="PacientId" ColumnName="PacientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meropriation">
+            <EntityTypeMapping TypeName="WorldSkills2024DBModel.Meropriation">
+              <MappingFragment StoreEntitySet="Meropriation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Otdel">
+            <EntityTypeMapping TypeName="WorldSkills2024DBModel.Otdel">
+              <MappingFragment StoreEntitySet="Otdel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacient">
+            <EntityTypeMapping TypeName="WorldSkills2024DBModel.Pacient">
+              <MappingFragment StoreEntitySet="Pacient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Otechestvo" ColumnName="Otechestvo" />
+                <ScalarProperty Name="Subname" ColumnName="Subname" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Seria" ColumnName="Seria" />
+                <ScalarProperty Name="DateBorn" ColumnName="DateBorn" />
+                <ScalarProperty Name="Pol" ColumnName="Pol" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="DateCard" ColumnName="DateCard" />
+                <ScalarProperty Name="DateLast" ColumnName="DateLast" />
+                <ScalarProperty Name="DateNext" ColumnName="DateNext" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="Polis" ColumnName="Polis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Places">
+            <EntityTypeMapping TypeName="WorldSkills2024DBModel.Places">
+              <MappingFragment StoreEntitySet="Places">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PacientId" ColumnName="PacientId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TipId" ColumnName="TipId" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Recomendation" ColumnName="Recomendation" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rechept">
+            <EntityTypeMapping TypeName="WorldSkills2024DBModel.Rechept">
+              <MappingFragment StoreEntitySet="Rechept">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Doza" ColumnName="Doza" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="PlacesId" ColumnName="PlacesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WorldSkills2024DBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
