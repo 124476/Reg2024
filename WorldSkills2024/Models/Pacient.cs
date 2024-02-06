@@ -38,6 +38,7 @@ namespace WorldSkills2024.Models
         public Nullable<System.DateTime> DateNext { get; set; }
         public Nullable<System.DateTime> DateEnd { get; set; }
         public string Polis { get; set; }
+        public byte[] DocumentSogl { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Gospital> Gospital { get; set; }

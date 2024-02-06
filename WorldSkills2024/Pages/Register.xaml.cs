@@ -31,11 +31,12 @@ namespace WorldSkills2024.Pages
             List<string> itemss = new List<string>() { "Мужской", "Женский"};
             Pol.ItemsSource = itemss;
             contextUser = pacient;
-            DataContext = contextUser;
             if (contextUser == null)
             {
+                contextUser = new Pacient();
                 GotQrCode.Visibility = Visibility.Collapsed;
             }
+            DataContext = contextUser;
         }
 
         private void Reg_Click(object sender, RoutedEventArgs e)
@@ -77,6 +78,28 @@ namespace WorldSkills2024.Pages
         {
             var window = new QrCode(contextUser.Id.ToString());
             window.ShowDialog();
+        }
+
+        private void SaveDocumentMed_Click(object sender, RoutedEventArgs e)
+        {
+            if (contextUser.DocumentSogl != null)
+            {
+                var window = new DocumentSaw(contextUser);
+                window.ShowDialog();
+            }
+            else
+            {
+                var window = new DocumentSogl(contextUser);
+                var result = window.ShowDialog();
+                if (result == true)
+                {
+                    MemoryStream memStream = new MemoryStream();
+                    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(App.imageBit));
+                    encoder.Save(memStream);
+                    contextUser.DocumentSogl = memStream.ToArray();
+                }
+            }
         }
     }
 }

@@ -81,7 +81,14 @@ namespace WorldSkills2024.Pages
                             Pacient pacient = App.DB.Pacient.FirstOrDefault(x => x.Id.ToString() == id);
                             if (pacient != null)
                             {
-                                NavigationService.Navigate(new Register(pacient));
+                                if (CanGos)
+                                {
+                                    NavigationService.Navigate(new NewPlaces(pacient));
+                                }
+                                else
+                                {
+                                    NavigationService.Navigate(new Register(pacient));
+                                }
                             }
                             else
                             {

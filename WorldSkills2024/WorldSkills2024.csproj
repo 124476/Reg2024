@@ -126,6 +126,12 @@
     <Compile Include="Pages\OpenDoctor.xaml.cs">
       <DependentUpon>OpenDoctor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\DocumentSaw.xaml.cs">
+      <DependentUpon>DocumentSaw.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DocumentSogl.xaml.cs">
+      <DependentUpon>DocumentSogl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\QrCode.xaml.cs">
       <DependentUpon>QrCode.xaml</DependentUpon>
     </Compile>
@@ -174,6 +180,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DocumentSaw.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DocumentSogl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,6 +249,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Imports\SoglDoc.png" />
     <Content Include="Models\DBWorld.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBWorld.edmx</DependentUpon>

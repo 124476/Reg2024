@@ -21,31 +21,31 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0">
             <TextBlock Text="Фамилия:" Width="220" FontSize="17"></TextBlock>
-            <TextBox Name="SubName" Text="{Binding Subname}" Width="220" FontSize="17"></TextBox>
+            <TextBox Name="SubName" Text="{Binding Subname}" Width="220" FontSize="17" MaxLength="50"></TextBox>
             <TextBlock Text="Имя:" Width="220" FontSize="17"></TextBlock>
-            <TextBox Name="Name" Text="{Binding Name}" Width="220" FontSize="17"></TextBox>
+            <TextBox Name="Name" Text="{Binding Name}" Width="220" FontSize="17" MaxLength="50"></TextBox>
             <TextBlock Text="Отечество:" Width="220" FontSize="17"></TextBlock>
-            <TextBox Name="Otech" Text="{Binding Otechestvo}" Width="220" FontSize="17"></TextBox>
+            <TextBox Name="Otech" Text="{Binding Otechestvo}" Width="220" FontSize="17" MaxLength="50"></TextBox>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0">
             <TextBlock Text="Телефон:" Width="220" FontSize="17"></TextBlock>
-            <TextBox Name="Phone" Text="{Binding Phone}" Width="220" FontSize="17"></TextBox>
+            <TextBox Name="Phone" Text="{Binding Phone}" Width="220" FontSize="17" MaxLength="10"></TextBox>
             <TextBlock Text="Почта:" Width="220" FontSize="17"></TextBlock>
-            <TextBox Name="Mail" Text="{Binding Mail}" Width="220" FontSize="17"></TextBox>
+            <TextBox Name="Mail" Text="{Binding Mail}" Width="220" FontSize="17" MaxLength="30"></TextBox>
             <TextBlock Text="Адрес:" Width="220" FontSize="17"></TextBlock>
-            <TextBox Name="Adress" Text="{Binding Adress}" Width="220" FontSize="17"></TextBox>
+            <TextBox Name="Adress" Text="{Binding Adress}" Width="220" FontSize="17" MaxLength="100"></TextBox>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1">
             <TextBlock Text="Номер паспорта:" Width="220" FontSize="17"></TextBlock>
-            <TextBox Name="Bunber" Text="{Binding Number}" Width="220" FontSize="17"></TextBox>
+            <TextBox Name="Bunber" Text="{Binding Number}" Width="220" FontSize="17" MaxLength="4"></TextBox>
             <TextBlock Text="Серия паспорта:" Width="220" FontSize="17"></TextBlock>
-            <TextBox Name="Seria" Text="{Binding Seria}" Width="220" FontSize="17"></TextBox>
+            <TextBox Name="Seria" Text="{Binding Seria}" Width="220" FontSize="17" MaxLength="6"></TextBox>
             <TextBlock Text="Дата рождения:" Width="220" FontSize="17"></TextBlock>
             <DatePicker Name="DateBorn" SelectedDate="{Binding DateBorn}" Width="220" FontSize="17"></DatePicker>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
             <TextBlock Text="Номер полиса:" Width="220" FontSize="17"></TextBlock>
-            <TextBox Name="Polis" Text="{Binding Polis}" Width="220" FontSize="17"></TextBox>
+            <TextBox Name="Polis" Text="{Binding Polis}" Width="220" FontSize="17" MaxLength="16"></TextBox>
             <TextBlock Text="Дата окончания полиса:" Width="220" FontSize="17"></TextBlock>
             <DatePicker Name="DateEnd" SelectedDate="{Binding DateEnd}" Width="220" FontSize="17"></DatePicker>
             <TextBlock Text="Пол:" Width="220" FontSize="17"></TextBlock>
@@ -53,7 +53,7 @@
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="0" VerticalAlignment="Center">
             <Button Name="SaveDocument" Content="Договор на медицинское ..." FontSize="15"></Button>
-            <Button Name="SaveDocumentMed" Content="Согласие на обработку ..." FontSize="15"></Button>
+            <Button Name="SaveDocumentMed" Content="Согласие на обработку ..." FontSize="15" Click="SaveDocumentMed_Click"></Button>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="1">
             <Image x:Name="QrPhoto" Height="120" Width="120" Source="{Binding QrCode}"></Image>

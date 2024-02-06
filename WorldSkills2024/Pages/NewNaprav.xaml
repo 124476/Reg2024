@@ -21,9 +21,9 @@
             <TextBlock Text="Дата:" FontSize="17"></TextBlock>
             <DatePicker Name="Date" SelectedDate="{Binding Date}" FontSize="17"></DatePicker>
             <TextBlock Text="Рекомендация:" FontSize="17"></TextBlock>
-            <TextBox x:Name="Recom" Text="{Binding Recomendation}" FontSize="17"></TextBox>
+            <TextBox x:Name="Recom" Text="{Binding Recomendation}" FontSize="17" MaxLength="250"></TextBox>
             <TextBlock Text="Результат:" FontSize="17"></TextBlock>
-            <TextBox x:Name="Result" Text="{Binding Result}" FontSize="17"></TextBox>
+            <TextBox x:Name="Result" Text="{Binding Result}" FontSize="17" MaxLength="250"></TextBox>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Width="200" Grid.Row="1" Grid.Column="0">
             <TextBlock Text="Мероприятие:" FontSize="17"></TextBlock>
@@ -31,7 +31,7 @@
             <TextBlock Text="Доктор:" FontSize="17"></TextBlock>
             <ComboBox x:Name="Doctor" SelectedItem="{Binding Doctor.Name}" FontSize="17"></ComboBox>
             <TextBlock Text="Цена:" FontSize="17"></TextBlock>
-            <TextBox x:Name="Money" Text="{Binding Money}" FontSize="17"></TextBox>
+            <TextBox x:Name="Money" Text="{Binding Money}" FontSize="17" MaxLength="50"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
             <Button x:Name="Rechept" Content="Рецепт" FontSize="17" Width="200" Click="Rechept_Click"></Button>

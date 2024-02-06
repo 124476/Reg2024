@@ -19,9 +19,9 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
             <TextBlock Text="Диагноз:" FontSize="17" Width="200"></TextBlock>
-            <TextBox x:Name="Diagnoz" FontSize="17" Width="200" Text="{Binding Diagnoz}"></TextBox>
+            <TextBox x:Name="Diagnoz" FontSize="17" Width="200" Text="{Binding Diagnoz}" MaxLength="250"></TextBox>
             <TextBlock Text="Цель:" FontSize="17" Width="200"></TextBlock>
-            <TextBox x:Name="Chel" FontSize="17" Width="200" Text="{Binding Chel}"></TextBox>
+            <TextBox x:Name="Chel" FontSize="17" Width="200" Text="{Binding Chel}" MaxLength="250"></TextBox>
             <TextBlock Text="Отделение:" FontSize="17" Width="200"></TextBlock>
             <ComboBox Name="Otdel" FontSize="17" Width="200" SelectedIndex="{Binding Otdelenie}"></ComboBox>
         </StackPanel>
@@ -33,9 +33,13 @@
             <TextBlock Text="Дата конца:" FontSize="17" Width="200"></TextBlock>
             <DatePicker x:Name="DateEnd" FontSize="17" Width="200" SelectedDate="{Binding DateEnd}"></DatePicker>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="200">
+            <CheckBox Name="Check" IsChecked="{Binding CanPrich}" Content="Отказаться" FontSize="17" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"></CheckBox>
+            <TextBlock Text="Причина:" FontSize="17" Name="Prih"></TextBlock>
+            <TextBox x:Name="Prich" Text="{Binding Prich}" FontSize="17" MaxLength="100"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <Button Name="Reg" Content="Добавить" FontSize="17" Width="250" Click="Reg_Click"></Button>
-            <Button Name="No" Content="Отказаться от госпитализации" FontSize="17" Width="250" Click="No_Click"></Button>
             <Button Name="Back" Content="Отмена" FontSize="17" Width="250" Click="Back_Click"></Button>
         </StackPanel>
     </Grid>

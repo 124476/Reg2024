@@ -31,6 +31,16 @@ namespace WorldSkills2024.Pages
             if (gospital == null)
             {
                 gospital = new Gospital();
+                Prih.Visibility = Visibility.Hidden;
+                Prich.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                if (gospital.CanPrich == false)
+                {
+                    Prih.Visibility = Visibility.Hidden;
+                    Prich.Visibility = Visibility.Hidden;
+                }
             }
             List<string> strings = new List<string>();
             foreach (Otdel s in App.DB.Otdel)
@@ -53,6 +63,11 @@ namespace WorldSkills2024.Pages
                     gospital.PacientId = pacient.Id;
                     App.DB.Gospital.Add(gospital);
                 }
+                gospital.CanPrich = Check.IsChecked;
+                if (gospital.CanPrich == false)
+                {
+                    gospital.Prich = null;
+                }
                 App.DB.SaveChanges();
                 NavigationService.GoBack();
             }
@@ -63,23 +78,21 @@ namespace WorldSkills2024.Pages
 
         }
 
-        private void No_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                App.DB.Gospital.Remove(gospital);
-                App.DB.SaveChanges();
-            }
-            catch
-            {
-                
-            } 
-            NavigationService.GoBack();
-        }
-
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Prih.Visibility = Visibility.Visible;
+            Prich.Visibility = Visibility.Visible;
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Prih.Visibility = Visibility.Hidden;
+            Prich.Visibility = Visibility.Hidden;
         }
     }
 }

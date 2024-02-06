@@ -22,6 +22,8 @@ namespace WorldSkills2024.Models
         public Nullable<System.DateTime> DateStart { get; set; }
         public Nullable<System.DateTime> DateEnd { get; set; }
         public Nullable<int> PacientId { get; set; }
+        public Nullable<bool> CanPrich { get; set; }
+        public string Prich { get; set; }
     
         public virtual Otdel Otdel { get; set; }
         public virtual Pacient Pacient { get; set; }
