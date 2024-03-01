@@ -17,32 +17,34 @@ namespace WorldSkills2024.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pacient()
         {
-            this.Gospital = new HashSet<Gospital>();
             this.Places = new HashSet<Places>();
+            this.Zapic = new HashSet<Zapic>();
         }
     
         public int Id { get; set; }
+        public string Surname { get; set; }
         public string Name { get; set; }
-        public byte[] Photo { get; set; }
-        public string Otechestvo { get; set; }
-        public string Subname { get; set; }
-        public string Number { get; set; }
-        public string Seria { get; set; }
+        public string Otech { get; set; }
+        public string Pasport { get; set; }
         public Nullable<System.DateTime> DateBorn { get; set; }
-        public Nullable<bool> Pol { get; set; }
+        public Nullable<int> PolId { get; set; }
         public string Adress { get; set; }
         public string Phone { get; set; }
-        public string Mail { get; set; }
+        public string Email { get; set; }
+        public string NumCard { get; set; }
         public Nullable<System.DateTime> DateCard { get; set; }
         public Nullable<System.DateTime> DateLast { get; set; }
         public Nullable<System.DateTime> DateNext { get; set; }
-        public Nullable<System.DateTime> DateEnd { get; set; }
         public string Polis { get; set; }
-        public byte[] DocumentSogl { get; set; }
+        public Nullable<System.DateTime> DateEndPolic { get; set; }
+        public Nullable<int> DiagnozId { get; set; }
+        public byte[] Photo { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Gospital> Gospital { get; set; }
+        public virtual Diagnozs Diagnozs { get; set; }
+        public virtual Pols Pols { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Places> Places { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zapic> Zapic { get; set; }
     }
 }

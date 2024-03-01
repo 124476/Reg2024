@@ -1,0 +1,29 @@
+﻿<Page x:Class="WorldSkills2024.Pages.NewRasDoc"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WorldSkills2024.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NewRasDoc">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" Name='StackReg'>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="С:" FontSize="17" Margin="0,10,0,10" Width="50"></TextBlock>
+                <DatePicker x:Name="DateStart" FontSize="17" Margin="0,10,0,10"></DatePicker>
+                <TextBlock Text="По:" FontSize="17" Margin="0,10,0,10" Width="50"></TextBlock>
+                <DatePicker x:Name="DateEnd" FontSize="17" Margin="0,10,0,10"></DatePicker>
+            </StackPanel>
+            <TextBlock Text="Время:" FontSize="17" Width="200"
+                        Margin="0,10,0,0"></TextBlock>
+            <TextBox x:Name="RasTime" FontSize="17" Width="200"
+                      Margin="0,10,0,0"></TextBox>
+            <CheckBox x:Name="ChecOc" Content="Особое событие" FontSize="17"
+                       Margin="0,10,0,0" Width="200" Click="ChecOc_Checked"></CheckBox>
+            <Button x:Name="Save" Content="Добавить" FontSize="17" Width="200"
+                    Click="Save_Click" Margin="0,10,0,0"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -22,28 +22,28 @@ namespace WorldSkills2024.Pages
     public partial class NewPlaces : Page
     {
         Pacient pacient;
-        Gospital gospital;
+        Gospitals gospital;
         public NewPlaces(Pacient pacientt)
         {
             InitializeComponent();
             pacient = pacientt;
-            gospital = App.DB.Gospital.FirstOrDefault(x => x.PacientId == pacient.Id);
+            gospital = App.DB.Gospitals.FirstOrDefault(x => x.PacientId == pacient.Id);
             if (gospital == null)
             {
-                gospital = new Gospital();
+                gospital = new Gospitals();
                 Prih.Visibility = Visibility.Hidden;
                 Prich.Visibility = Visibility.Hidden;
             }
             else
             {
-                if (gospital.CanPrich == false)
+                if (gospital.canPrich == false)
                 {
                     Prih.Visibility = Visibility.Hidden;
                     Prich.Visibility = Visibility.Hidden;
                 }
             }
             List<string> strings = new List<string>();
-            foreach (Otdel s in App.DB.Otdel)
+            foreach (Otdels s in App.DB.Otdels)
             {
                 strings.Add(s.Name);
             }
@@ -56,15 +56,15 @@ namespace WorldSkills2024.Pages
         {
             if (Otdel.SelectedItem != null && gospital.Chel != null &&
                 DateEnd.SelectedDate != null && DateStart.SelectedDate != null &&
-                Yslov.SelectedItem != null && gospital.Diagnoz != null)
+                Yslov.SelectedItem != null)
             {
                 if (gospital.Id == 0)
                 {
                     gospital.PacientId = pacient.Id;
-                    App.DB.Gospital.Add(gospital);
+                    App.DB.Gospitals.Add(gospital);
                 }
-                gospital.CanPrich = Check.IsChecked;
-                if (gospital.CanPrich == false)
+                gospital.canPrich = Check.IsChecked;
+                if (gospital.canPrich == false)
                 {
                     gospital.Prich = null;
                 }

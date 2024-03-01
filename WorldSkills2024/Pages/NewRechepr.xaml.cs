@@ -30,9 +30,9 @@ namespace WorldSkills2024.Pages
 
         private void Del_Click(object sender, RoutedEventArgs e)
         {
-            if (RecheptDat.SelectedItem is Rechept rechept)
+            if (RecheptDat.SelectedItem is Rechepts rechept)
             {
-                App.DB.Rechept.Remove(rechept);
+                App.DB.Rechepts.Remove(rechept);
                 App.DB.SaveChanges();
                 Refrash();
             }
@@ -45,7 +45,7 @@ namespace WorldSkills2024.Pages
 
         private void Refrash()
         {
-            RecheptDat.ItemsSource = App.DB.Rechept.Where(x => x.PlacesId == places.Id).ToList();
+            RecheptDat.ItemsSource = App.DB.Rechepts.Where(x => x.GospitalId == places.Id).ToList();
             
         }
 

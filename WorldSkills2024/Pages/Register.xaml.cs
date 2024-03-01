@@ -41,10 +41,10 @@ namespace WorldSkills2024.Pages
 
         private void Reg_Click(object sender, RoutedEventArgs e)
         {
-            if (Pol.SelectedValue != null & contextUser.Name != null & contextUser.Subname != null
-                & contextUser.Otechestvo != null & contextUser.Adress != null & contextUser.Phone != null
-                & contextUser.Mail != null & contextUser.Polis != null & DateBorn.SelectedDate != null
-                & contextUser.DateEnd != null)
+            if (Pol.SelectedValue != null & contextUser.Name != null & contextUser.Surname != null
+                & contextUser.Otech != null & contextUser.Adress != null & contextUser.Phone != null
+                & contextUser.Email != null & contextUser.Polis != null & DateBorn.SelectedDate != null
+                & contextUser.DateEndPolic != null)
             {
                 if (contextUser.Id == 0) {
                     App.DB.Pacient.Add(contextUser);
@@ -82,7 +82,7 @@ namespace WorldSkills2024.Pages
 
         private void SaveDocumentMed_Click(object sender, RoutedEventArgs e)
         {
-            if (contextUser.DocumentSogl != null)
+            if (contextUser != null)
             {
                 var window = new DocumentSaw(contextUser);
                 window.ShowDialog();
@@ -97,7 +97,6 @@ namespace WorldSkills2024.Pages
                     JpegBitmapEncoder encoder = new JpegBitmapEncoder();
                     encoder.Frames.Add(BitmapFrame.Create(App.imageBit));
                     encoder.Save(memStream);
-                    contextUser.DocumentSogl = memStream.ToArray();
                 }
             }
         }

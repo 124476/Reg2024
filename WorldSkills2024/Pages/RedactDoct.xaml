@@ -1,0 +1,43 @@
+﻿<Page x:Class="WorldSkills2024.Pages.RedactDoct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WorldSkills2024.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RedactDoct"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="{Binding Surname}" FontSize="17" Margin="5,0,5,0"></TextBlock>
+                <TextBlock Text="{Binding Name}" FontSize="17" Margin="5,0,5,0"></TextBlock>
+                <TextBlock Text="{Binding Otech}" FontSize="17" Margin="5,0,5,0"></TextBlock>
+                <TextBlock Text="{Binding Doctors.Otdels.Name}" FontSize="17" Margin="10,0,10,0"></TextBlock>
+            </StackPanel>
+            <DataGrid x:Name="DatesDoctor" AutoGenerateColumns="False" IsReadOnly="True" FontSize="17" Height="300">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat='MM/dd/yyyy'}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Time" Binding="{Binding Time, StringFormat='{}{0:hh\\:mm}'}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Специальное событие" Binding="{Binding Spech}"></DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="Del" Content="Удалить" Width="200"
+                                        Click="Del_Click" FontSize="17"></Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="NewRas" Content="Новое время" Width="200" 
+                        FontSize="17" Click="NewRas_Click"></Button>
+                <Button x:Name="OkRas" Content="Утвердить" Width="200" 
+                        FontSize="17" Click="OkRas_Click"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

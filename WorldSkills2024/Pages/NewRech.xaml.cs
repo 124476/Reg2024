@@ -21,22 +21,22 @@ namespace WorldSkills2024.Pages
     /// </summary>
     public partial class NewRech : Page
     {
-        Rechept rechept;
+        Rechepts rechept;
         Places places;
         public NewRech(Places placess)
         {
             InitializeComponent();
             places = placess;
-            rechept = new Rechept();
+            rechept = new Rechepts();
             DataContext = rechept;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (rechept.Name != null && rechept.Format != null && rechept.Doza != null)
+            if (rechept.Name != null)
             {
-                rechept.PlacesId = places.Id;
-                App.DB.Rechept.Add(rechept);
+                rechept.GospitalId = places.Id;
+                App.DB.Rechepts.Add(rechept);
                 App.DB.SaveChanges();
                 NavigationService.GoBack();
             }

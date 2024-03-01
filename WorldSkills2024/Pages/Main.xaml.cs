@@ -44,5 +44,10 @@ namespace WorldSkills2024.Pages
         {
             NavigationService.Navigate(new OpenDoctor());
         }
+
+        private void Plan_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new OpenAdmin());
+        }
     }
 }

@@ -12,20 +12,12 @@ namespace WorldSkills2024.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Gospital
+    public partial class Rechepts
     {
         public int Id { get; set; }
-        public string Diagnoz { get; set; }
-        public string Chel { get; set; }
-        public Nullable<int> Otdelenie { get; set; }
-        public Nullable<bool> Yslovie { get; set; }
-        public Nullable<System.DateTime> DateStart { get; set; }
-        public Nullable<System.DateTime> DateEnd { get; set; }
-        public Nullable<int> PacientId { get; set; }
-        public Nullable<bool> CanPrich { get; set; }
-        public string Prich { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> GospitalId { get; set; }
     
-        public virtual Otdel Otdel { get; set; }
-        public virtual Pacient Pacient { get; set; }
+        public virtual Gospitals Gospitals { get; set; }
     }
 }

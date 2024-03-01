@@ -18,9 +18,9 @@
             <DataGrid Name="PacientData" AutoGenerateColumns="False" IsReadOnly="True" Height="340" FontSize="15">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding Subname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Отечество" Binding="{Binding Otechestvo}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отечество" Binding="{Binding Otech}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateBorn, StringFormat=\{0:dd.MM.yy\}}"></DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

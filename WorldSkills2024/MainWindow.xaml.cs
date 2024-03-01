@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,23 @@ namespace WorldSkills2024
         {
             InitializeComponent();
             MyFrame.Navigate(new Main());
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.GoBack();
+        }
+
+        private void MyFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (MyFrame.CanGoBack)
+            {
+                Back.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Back.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

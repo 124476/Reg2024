@@ -28,7 +28,7 @@ namespace WorldSkills2024.Pages
 
         private void Poisk_Click(object sender, RoutedEventArgs e)
         {
-            Doctor doctor = App.DB.Doctor.FirstOrDefault(x => x.Name == Name.Text && x.Password == Password.Text);
+            Doctors doctor = App.DB.Doctors.FirstOrDefault(x => x.Name == Name.Text);
             if (doctor != null)
             {
                 NavigationService.Navigate(new MainOkno());

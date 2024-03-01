@@ -87,16 +87,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBWorld.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Doctor.cs">
+    <Compile Include="Models\Diagnozs.cs">
       <DependentUpon>DBWorld.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Gospital.cs">
+    <Compile Include="Models\Doctors.cs">
       <DependentUpon>DBWorld.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Meropriation.cs">
+    <Compile Include="Models\Gospitals.cs">
       <DependentUpon>DBWorld.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Otdel.cs">
+    <Compile Include="Models\Meropriations.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Otdels.cs">
       <DependentUpon>DBWorld.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pacient.cs">
@@ -105,11 +108,35 @@
     <Compile Include="Models\Places.cs">
       <DependentUpon>DBWorld.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Rechept.cs">
+    <Compile Include="Models\Pols.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rapisan.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rechepts.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reesults.cs">
       <DependentUpon>DBWorld.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tips.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Yslovies.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zapic.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GlavDoctor.xaml.cs">
+      <DependentUpon>GlavDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainAdmin.xaml.cs">
+      <DependentUpon>MainAdmin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\NewNaprav.xaml.cs">
       <DependentUpon>NewNaprav.xaml</DependentUpon>
@@ -117,14 +144,29 @@
     <Compile Include="Pages\NewPlaces.xaml.cs">
       <DependentUpon>NewPlaces.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\NewRasDoc.xaml.cs">
+      <DependentUpon>NewRasDoc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\NewRech.xaml.cs">
       <DependentUpon>NewRech.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\NewRechepr.xaml.cs">
       <DependentUpon>NewRechepr.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\OknoRegister.xaml.cs">
+      <DependentUpon>OknoRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OpenAdmin.xaml.cs">
+      <DependentUpon>OpenAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\OpenDoctor.xaml.cs">
       <DependentUpon>OpenDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RedactDoct.xaml.cs">
+      <DependentUpon>RedactDoct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Zapiska.xaml.cs">
+      <DependentUpon>Zapiska.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\DocumentSaw.xaml.cs">
       <DependentUpon>DocumentSaw.xaml</DependentUpon>
@@ -147,11 +189,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\GlavDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\GotPacient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,6 +217,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\NewRasDoc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\NewRech.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,11 +229,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\OknoRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OpenAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\OpenDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RedactDoct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Zapiska.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -250,6 +320,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imports\SoglDoc.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\DBWorld.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBWorld.edmx</DependentUpon>

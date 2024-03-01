@@ -12,14 +12,14 @@ namespace WorldSkills2024.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Rechept
+    public partial class Zapic
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Doza { get; set; }
-        public string Format { get; set; }
-        public Nullable<int> PlacesId { get; set; }
+        public Nullable<int> PacientId { get; set; }
+        public Nullable<int> RaspisanId { get; set; }
+        public Nullable<bool> Predvar { get; set; }
     
-        public virtual Places Places { get; set; }
+        public virtual Pacient Pacient { get; set; }
+        public virtual Rapisan Rapisan { get; set; }
     }
 }

@@ -34,14 +34,14 @@ namespace WorldSkills2024.Pages
             }
             DataContext = places;
             List<string> strings = new List<string>();
-            foreach (Doctor doctor in App.DB.Doctor)
+            foreach (Doctors doctor in App.DB.Doctors)
             {
                 strings.Add(doctor.Name);
             }
             Doctor.ItemsSource = strings;
 
             List<string> stringss = new List<string>();
-            foreach (Meropriation doctor in App.DB.Meropriation)
+            foreach (Meropriations doctor in App.DB.Meropriations)
             {
                 stringss.Add(doctor.Name);
             }
@@ -50,8 +50,8 @@ namespace WorldSkills2024.Pages
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (places.Result != null && Date.SelectedDate != null && Doctor.SelectedItem != null 
-                && Merop.SelectedItem != null && places.Recomendation != null && places.Money != null)
+            if (places.ResultId != null && Date.SelectedDate != null && Doctor.SelectedItem != null 
+                && Merop.SelectedItem != null && places.Recomidation != null)
             {
                 if (places.Id == 0)
                 {

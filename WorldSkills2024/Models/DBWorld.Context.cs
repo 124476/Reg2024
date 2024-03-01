@@ -13,10 +13,10 @@ namespace WorldSkills2024.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WorldSkills2024DBEntities2 : DbContext
+    public partial class DBWorldSkillsRegNewEntities7 : DbContext
     {
-        public WorldSkills2024DBEntities2()
-            : base("name=WorldSkills2024DBEntities2")
+        public DBWorldSkillsRegNewEntities7()
+            : base("name=DBWorldSkillsRegNewEntities7")
         {
         }
     
@@ -25,13 +25,20 @@ namespace WorldSkills2024.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Doctor> Doctor { get; set; }
-        public virtual DbSet<Gospital> Gospital { get; set; }
-        public virtual DbSet<Meropriation> Meropriation { get; set; }
-        public virtual DbSet<Otdel> Otdel { get; set; }
+        public virtual DbSet<Diagnozs> Diagnozs { get; set; }
+        public virtual DbSet<Doctors> Doctors { get; set; }
+        public virtual DbSet<Gospitals> Gospitals { get; set; }
+        public virtual DbSet<Meropriations> Meropriations { get; set; }
+        public virtual DbSet<Otdels> Otdels { get; set; }
         public virtual DbSet<Pacient> Pacient { get; set; }
         public virtual DbSet<Places> Places { get; set; }
-        public virtual DbSet<Rechept> Rechept { get; set; }
+        public virtual DbSet<Pols> Pols { get; set; }
+        public virtual DbSet<Rapisan> Rapisan { get; set; }
+        public virtual DbSet<Rechepts> Rechepts { get; set; }
+        public virtual DbSet<Reesults> Reesults { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Tips> Tips { get; set; }
+        public virtual DbSet<Yslovies> Yslovies { get; set; }
+        public virtual DbSet<Zapic> Zapic { get; set; }
     }
 }

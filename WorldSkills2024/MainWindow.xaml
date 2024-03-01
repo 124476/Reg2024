@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" MinHeight="450" MinWidth="1000">
     <Grid>
-        <Frame Name="MyFrame" NavigationUIVisibility="Hidden"></Frame>
+        <StackPanel>
+            <Button x:Name="Back" Content="Назад" FontSize="17" Width="150"
+                    HorizontalAlignment="Right" Margin="0,10,50,20"
+                    Click="Back_Click"></Button>
+            <Frame Name="MyFrame" NavigationUIVisibility="Hidden" ContentRendered="MyFrame_ContentRendered"></Frame>
+        </StackPanel>
     </Grid>
 </Window>

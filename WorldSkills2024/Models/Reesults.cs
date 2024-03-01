@@ -12,21 +12,18 @@ namespace WorldSkills2024.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Places
+    public partial class Reesults
     {
-        public int Id { get; set; }
-        public Nullable<int> PacientId { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> DoctorId { get; set; }
-        public Nullable<int> TipId { get; set; }
-        public Nullable<int> MeropriationId { get; set; }
-        public Nullable<int> ResultId { get; set; }
-        public string Recomidation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Reesults()
+        {
+            this.Places = new HashSet<Places>();
+        }
     
-        public virtual Doctors Doctors { get; set; }
-        public virtual Meropriations Meropriations { get; set; }
-        public virtual Pacient Pacient { get; set; }
-        public virtual Reesults Reesults { get; set; }
-        public virtual Tips Tips { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Places> Places { get; set; }
     }
 }

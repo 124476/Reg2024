@@ -11,23 +11,25 @@
     </Window.Background>
     <Grid>
         <StackPanel>
-            <TextBox FontSize="13" Width="500" Height="25" Margin="60,58,0,0"></TextBox>
-            <StackPanel Orientation="Horizontal">
-                <TextBox FontSize="13" Width="85" Height="25" Margin="120,8,0,0"></TextBox>
-                <TextBox FontSize="13" Width="380" Height="25" Margin="52,8,0,0"></TextBox>
-            </StackPanel>
-            <TextBox FontSize="13" Width="440" Height="25" Margin="135,13,0,0"></TextBox>
-            <TextBox FontSize="13" Width="330" Height="25" Margin="230,0,0,0"></TextBox>
-            <TextBox FontSize="13" Width="570" Height="25" Margin="5,95,0,0"></TextBox>
-            <TextBox FontSize="13" Width="570" Height="25" Margin="5,0,0,0"></TextBox>
-            <TextBox FontSize="13" Width="270" Height="25" Margin="150,157,0,0"></TextBox>
-            <StackPanel Orientation="Horizontal">
-                <TextBox FontSize="13" Width="34" Height="25" Margin="116,203,0,0"></TextBox>
-                <TextBox FontSize="13" Width="90" Height="25" Margin="6,203,0,0"></TextBox>
-                <TextBox FontSize="13" Width="110" Height="25" Margin="140,203,0,0"></TextBox>
-                <TextBox FontSize="13" Width="110" Height="25" Margin="10,203,0,0"></TextBox>
-            </StackPanel>
-            </StackPanel>
+            <Grid x:Name="PrintDrig">
+                <TextBox FontSize="13" Width="500" Height="25" Margin="60,58,0,0"></TextBox>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox FontSize="13" Width="85" Height="25" Margin="120,8,0,0"></TextBox>
+                    <TextBox FontSize="13" Width="380" Height="25" Margin="52,8,0,0"></TextBox>
+                </StackPanel>
+                <TextBox FontSize="13" Width="440" Height="25" Margin="135,13,0,0"></TextBox>
+                <TextBox FontSize="13" Width="330" Height="25" Margin="230,0,0,0"></TextBox>
+                <TextBox FontSize="13" Width="570" Height="25" Margin="5,95,0,0"></TextBox>
+                <TextBox FontSize="13" Width="570" Height="25" Margin="5,0,0,0"></TextBox>
+                <TextBox FontSize="13" Width="270" Height="25" Margin="150,157,0,0"></TextBox>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox FontSize="13" Width="34" Height="25" Margin="116,203,0,0"></TextBox>
+                    <TextBox FontSize="13" Width="90" Height="25" Margin="6,203,0,0"></TextBox>
+                    <TextBox FontSize="13" Width="110" Height="25" Margin="140,203,0,0"></TextBox>
+                    <TextBox FontSize="13" Width="110" Height="25" Margin="10,203,0,0"></TextBox>
+                </StackPanel>
+            </Grid>
+    </StackPanel>
         <Button Name="Save" Content="Сохранить" FontSize="17" Click="Save_Click" Height="25" VerticalAlignment="Bottom"></Button>
     </Grid>
 </Window>

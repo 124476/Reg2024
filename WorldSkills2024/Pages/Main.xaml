@@ -14,6 +14,7 @@
             <Button Content="Медицинская карта" Name="GotPacient" Click="GotPacient_Click" FontSize="17"></Button>
             <Button Content="Госпитализация" Name="Gos" Click="Gos_Click" FontSize="17"></Button>
             <Button Content="Направление пациентов на лечебно-диагностические процедуры" Name="Produ" Click="Produ_Click" FontSize="17"></Button>
+            <Button Content="Администрирование, планирование и статистика" Name="Plan" Click="Plan_Click"  FontSize="17"></Button>
         </StackPanel>
         
     </Grid>

@@ -15,7 +15,7 @@ namespace WorldSkills2024
     /// </summary>
     public partial class App : Application
     {
-        public static WorldSkills2024DBEntities2 DB = new WorldSkills2024DBEntities2();
+        public static DBWorldSkillsRegNewEntities7 DB = new DBWorldSkillsRegNewEntities7();
         public static BitmapImage imageBit;
     }
 }

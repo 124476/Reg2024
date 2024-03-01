@@ -37,28 +37,10 @@ namespace WorldSkills2024.Windows
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            RenderTargetBitmap rtb = new RenderTargetBitmap((int)RenderSize.Width,
-            (int)RenderSize.Height, 96d, 96d, PixelFormats.Default);
-            rtb.Render(this);
-            var crop = new CroppedBitmap(rtb, new Int32Rect(0, 0, 700, 800));
-            BitmapEncoder pngEncoder = new PngBitmapEncoder();
-            pngEncoder.Frames.Add(BitmapFrame.Create(crop));
-            using (Stream s = new MemoryStream())
+            var dialog = new PrintDialog();
+            if (dialog.ShowDialog().GetValueOrDefault())
             {
-                pngEncoder.Save(s);
-                Bitmap myBitmap = new Bitmap(s);
-                using (MemoryStream memory = new MemoryStream())
-                {
-                    myBitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
-                    memory.Position = 0;
-                    BitmapImage bitmapimage = new BitmapImage();
-                    bitmapimage.BeginInit();
-                    bitmapimage.StreamSource = memory;
-                    bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmapimage.EndInit();
-                    App.imageBit = bitmapimage;
-                    DialogResult = true;
-                }
+                dialog.PrintVisual(PrintDrig, "");
             }
         }
     }
