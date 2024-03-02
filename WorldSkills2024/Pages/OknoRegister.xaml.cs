@@ -46,7 +46,10 @@ namespace WorldSkills2024.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ZapickaData.ItemsSource = App.DB.Zapic.ToList();
+            ComboDate.ItemsSource = new List<string> { "Дневное", "Недельное"};
+            ComboDate.SelectedIndex = 0;
+            SelDate.SelectedDate = DateTime.Now;
+            ZapickaData.ItemsSource = App.DB.Zapic.Where(x => x.Rapisan.Date == SelDate.SelectedDate).ToList();
         }
 
         private void DelDoc_Click(object sender, RoutedEventArgs e)
@@ -61,6 +64,32 @@ namespace WorldSkills2024.Pages
             else
             {
                 MessageBox.Show("error");
+            }
+        }
+
+        private void SelDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboDate.SelectedIndex == 0)
+            {
+                ZapickaData.ItemsSource = App.DB.Zapic.Where(x => x.Rapisan.Date == SelDate.SelectedDate).ToList();
+            }
+            else
+            {
+                ZapickaData.ItemsSource = App.DB.Zapic.Where(x => x.Rapisan.Date >= SelDate.SelectedDate
+                && x.Rapisan.Date.Value.Day <= SelDate.SelectedDate.Value.Day + 7).ToList();
+            }
+        }
+
+        private void ComboDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboDate.SelectedIndex == 0)
+            {
+                ZapickaData.ItemsSource = App.DB.Zapic.Where(x => x.Rapisan.Date == SelDate.SelectedDate).ToList();
+            }
+            else
+            {
+                ZapickaData.ItemsSource = App.DB.Zapic.Where(x => x.Rapisan.Date >= SelDate.SelectedDate 
+                && x.Rapisan.Date.Value.Day <= SelDate.SelectedDate.Value.Day + 7).ToList();
             }
         }
     }

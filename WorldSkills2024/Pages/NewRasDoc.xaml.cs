@@ -52,17 +52,5 @@ namespace WorldSkills2024.Pages
                 NavigationService.GoBack();
             }
         }
-
-        private void ChecOc_Checked(object sender, RoutedEventArgs e)
-        {
-            if (ChecOc.IsChecked == true)
-            {
-                StackReg.Background = Brushes.Green;
-            }
-            else
-            {
-                StackReg.Background = Brushes.White;
-            }
-        }
     }
 }

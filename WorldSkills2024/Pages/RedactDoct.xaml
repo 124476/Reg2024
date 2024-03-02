@@ -18,10 +18,20 @@
                 <TextBlock Text="{Binding Doctors.Otdels.Name}" FontSize="17" Margin="10,0,10,0"></TextBlock>
             </StackPanel>
             <DataGrid x:Name="DatesDoctor" AutoGenerateColumns="False" IsReadOnly="True" FontSize="17" Height="300">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Spech}"
+                                         Value="true">
+                                <Setter Property="Background"
+                                        Value="Blue"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat='MM/dd/yyyy'}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Time" Binding="{Binding Time, StringFormat='{}{0:hh\\:mm}'}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Специальное событие" Binding="{Binding Spech}"></DataGridTextColumn>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

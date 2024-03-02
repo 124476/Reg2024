@@ -11,7 +11,25 @@
 
     <Grid>
         <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox Name="ComboDate" Width="200" FontSize="17" 
+                          SelectionChanged="ComboDate_SelectionChanged"
+                          Margin="0,0,50,0"></ComboBox>
+                <DatePicker Name="SelDate" FontSize="17" Width="200"
+                            SelectedDateChanged="SelDate_SelectedDateChanged"></DatePicker>
+            </StackPanel>
             <DataGrid Name="ZapickaData" AutoGenerateColumns="False" IsReadOnly="True" Height="340" FontSize="15">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Rapisan.Spech}"
+                         Value="true">
+                                <Setter Property="Background"
+                        Value="Blue"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Фамилия" Binding="{Binding Pacient.Surname}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Имя" Binding="{Binding Pacient.Name}"></DataGridTextColumn>
@@ -19,8 +37,7 @@
                     <DataGridTextColumn Header="Время" Binding="{Binding Rapisan.Time, StringFormat='{}{0:hh\\:mm}'}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Доктор" Binding="{Binding Rapisan.Doctors.Surname}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Предварительно" Binding="{Binding Predvar}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Специальное событие" Binding="{Binding Rapisan.Spech}"></DataGridTextColumn>
-                </DataGrid.Columns>
+                    </DataGrid.Columns>
             </DataGrid>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="NewDoc" Content="Новый" FontSize="17" 
